@@ -1,35 +1,53 @@
 const photos = [
-  { title: "Portret urban", gradient: "linear-gradient(135deg, #4a1942, #e879a0)" },
-  { title: "Peisaj montan", gradient: "linear-gradient(135deg, #1a1a2e, #6366f1)" },
-  { title: "Stradă nocturnă", gradient: "linear-gradient(135deg, #0f172a, #38bdf8)" },
-  { title: "Macro natură", gradient: "linear-gradient(135deg, #14532d, #86efac)" },
-  { title: "Arhitectură", gradient: "linear-gradient(135deg, #422006, #fbbf24)" },
-  { title: "Eveniment", gradient: "linear-gradient(135deg, #312e81, #c084fc)" },
+  {
+    title: "Cascadă în pădure",
+    src: "images/cascada-prieteni.png",
+    alt: "Grup de prieteni lângă o cascadă în pădure, unghi jos",
+  },
+  {
+    title: "Cascadă pe versanți",
+    src: "images/cascada-versanti.png",
+    alt: "Cascadă artificială pe versanți, primăvară",
+  },
+  {
+    title: "Lac și pui de lebădă",
+    src: "images/lac-lebada.png",
+    alt: "Pui de lebădă pe malul unui lac liniștit, cer albastru",
+  },
 ];
 
 const gallery = document.getElementById("gallery");
 const dialog = document.getElementById("lightbox");
-const preview = document.getElementById("lightbox-preview");
+const preview = document.getElementById("lightbox-img");
 const caption = document.getElementById("lightbox-caption");
 const closeBtn = document.getElementById("close-lightbox");
 
-photos.forEach((photo, index) => {
+photos.forEach((photo) => {
   const btn = document.createElement("button");
   btn.type = "button";
-  btn.style.background = photo.gradient;
   btn.setAttribute("aria-label", `Deschide ${photo.title}`);
+
+  const img = document.createElement("img");
+  img.src = photo.src;
+  img.alt = "";
+  img.loading = "lazy";
+  img.decoding = "async";
+
+  btn.appendChild(img);
   btn.addEventListener("click", () => openLightbox(photo));
   gallery.appendChild(btn);
 });
 
 function openLightbox(photo) {
-  preview.style.background = photo.gradient;
+  preview.src = photo.src;
+  preview.alt = photo.alt;
   caption.textContent = photo.title;
   dialog.showModal();
 }
 
 function closeLightbox() {
   dialog.close();
+  preview.removeAttribute("src");
 }
 
 closeBtn.addEventListener("click", closeLightbox);
