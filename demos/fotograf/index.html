@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portofoliu fotograf — Demo</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Lens Studio</h1>
+      <p class="tag">Demo portofoliu — galerie foto</p>
+    </header>
+
+    <main class="gallery" id="gallery" aria-label="Galerie fotografii"></main>
+
+    <dialog id="lightbox" class="lightbox">
+      <button type="button" class="close" id="close-lightbox" aria-label="Închide">
+        ×
+      </button>
+      <figure>
+        <div id="lightbox-preview" class="lightbox-preview" role="img"></div>
+        <figcaption id="lightbox-caption"></figcaption>
+      </figure>
+    </dialog>
+
+    <footer>
+      <a href="../../index.html#proiecte">← Înapoi la portofoliu</a>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
